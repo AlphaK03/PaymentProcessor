@@ -1,16 +1,16 @@
 import java.util.List;
 
 public class PaymentProcessor {
-    private List<PaymentProcessor> paymentProcessors;
+    private List<PaymentMethod> paymentMethods;
 
-    public PaymentProcessor(List<PaymentProcessor> paymentProcessors) {
-        this.paymentProcessors = paymentProcessors;
+    public PaymentProcessor(List<PaymentMethod> paymentMethods) {
+        this.paymentMethods = paymentMethods;
     }
 
     public void processPayment(double amount, String method) {
-        for (PaymentProcessor processor : paymentProcessors) {
-            if (processor.supports(method)) {
-                processor.process(amount);
+        for (PaymentMethod methodProcessor : paymentMethods) {
+            if (methodProcessor.supports(method)) {
+                methodProcessor.process(amount);
                 return;
             }
         }
